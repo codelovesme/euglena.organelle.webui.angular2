@@ -27,7 +27,8 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
         });
     }
     private getAlive(): void {
-        let app = require('main');
+        let app = require('app');
+        enableProdMode();
         bootstrap(app.AppComponent);
     }
 }
