@@ -2,12 +2,10 @@
 /// <reference path="../typings/node/node.d.ts" />
 
 "use strict";
-import * as http from "http";
 import {euglena_template} from "euglena.template";
 import {euglena} from "euglena";
 import Particle = euglena.being.Particle;
 import Exception = euglena.sys.type.Exception;
-import * as path from "path";
 
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
@@ -29,8 +27,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
         });
     }
     private getAlive(): void {
-        let appDir = path.dirname(require.main.filename);
-        let app = require(path.join(appDir, './', 'components/app'));
+        let app = require('main');
         bootstrap(app.AppComponent);
     }
 }
