@@ -9,6 +9,7 @@ import Exception = euglena.sys.type.Exception;
 
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
+import { provideRouter,RouterConfig } from '@angular/router';
 
 
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
@@ -29,6 +30,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     private getAlive(): void {
         let app = require('app.js');
         enableProdMode();
-        bootstrap(app.AppComponent);
+        let routes = require('routes.js');
+        bootstrap(app.AppComponent, [provideRouter(app.ROUTES)]);
     }
 }
