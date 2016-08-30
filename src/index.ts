@@ -30,7 +30,6 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     private getAlive(): void {
         let app = require('app.js');
         enableProdMode();
-        let routes = require('routes.js');
         bootstrap(app.AppComponent, [provideRouter(app.ROUTES)]);
     }
 }
