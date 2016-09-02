@@ -20,7 +20,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
     getAlive() {
         let app = require('app.js');
         core_1.enableProdMode();
-        platform_browser_dynamic_1.bootstrap(app.AppComponent, [router_1.provideRouter(app.ROUTES)]);
+        platform_browser_dynamic_1.bootstrap(app.AppComponent, [router_1.provideRouter(app.ROUTES), app.Global]);
     }
 }
 exports.Organelle = Organelle;
