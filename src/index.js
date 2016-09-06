@@ -14,20 +14,19 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         this.viewModule = require('component/app.js');
     }
     bindActions(addAction) {
-        let scope = this.viewModule.Scope;
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
             this_.getAlive();
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
-            scope.cytoplasm.saveParticle(particle.data);
+            this.viewModule.Scope.cytoplasm.saveParticle(particle.data);
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
-            let data = scope.cytoplasm.readParticle(particle.data);
+            let data = this.viewModule.Scope.cytoplasm.readParticle(particle.data);
             this_.send(data);
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
-            scope.cytoplasm.removeParticle(particle.data);
+            this.viewModule.Scope.cytoplasm.removeParticle(particle.data);
         });
     }
     getAlive() {
