@@ -31,7 +31,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
     }
     getAlive() {
         core_1.enableProdMode();
-        platform_browser_dynamic_1.bootstrap(this.viewModule.AppComponent, [router_1.provideRouter(this.viewModule.ROUTES), this.viewModule.Scope]);
+        platform_browser_dynamic_1.bootstrap(this.viewModule.RootComponent, [router_1.provideRouter(this.viewModule.ROUTES), this.viewModule.Scope]);
     }
 }
 exports.Organelle = Organelle;
