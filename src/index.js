@@ -11,7 +11,7 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         super(OrganelleName);
         this.viewModule = null;
         this_ = this;
-        this.viewModule = require('app.js');
+        this.viewModule = require('component/app.js');
     }
     bindActions(addAction) {
         let scope = this.viewModule.Scope;
