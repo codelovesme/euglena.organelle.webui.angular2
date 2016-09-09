@@ -32,7 +32,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
         });
         addAction(euglena_template.being.alive.constants.impacts.ReadParticle,(particle)=>{
             let data = this.viewModule.Scope.cytoplasm.readParticle(particle.data);
-            this_.send(data);
+            this_.send(data,this_.name);
         });
         addAction(euglena_template.being.alive.constants.impacts.RemoveParticle,(particle)=>{
             this.viewModule.Scope.cytoplasm.removeParticle(particle.data);
