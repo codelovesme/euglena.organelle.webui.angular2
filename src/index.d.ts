@@ -5,6 +5,7 @@ import Particle = euglena.being.Particle;
 export declare class Organelle extends euglena_template.being.alive.organelle.WebUIOrganelle {
     private sapContent;
     private viewModule;
+    private viewService;
     constructor();
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void;
     private getAlive();
