@@ -32,9 +32,10 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     constructor() {
         super(OrganelleName);
         this_ = this;
-        this.viewModule = require('component/root.js');
+        
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
+        this.viewModule = require('component/root.js');
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
             this_.getAlive();
