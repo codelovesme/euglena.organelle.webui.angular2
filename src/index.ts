@@ -16,8 +16,8 @@ const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrg
 
 export class Organelle extends euglena_template.being.alive.organelle.WebUIOrganelle {
     private sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
-    private viewModule: any = null;
-    private viewService: any = null;
+    private viewModule: any;
+    private viewService: any;
 
     constructor() {
         super(OrganelleName);

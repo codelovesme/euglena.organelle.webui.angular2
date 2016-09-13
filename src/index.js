@@ -11,8 +11,6 @@ const OrganelleName = euglena_template_1.euglena_template.being.alive.constants.
 class Organelle extends euglena_template_1.euglena_template.being.alive.organelle.WebUIOrganelle {
     constructor() {
         super(OrganelleName);
-        this.viewModule = null;
-        this.viewService = null;
     }
     bindActions(addAction) {
         let this_ = this;
