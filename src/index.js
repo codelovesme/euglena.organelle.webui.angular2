@@ -13,6 +13,10 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
     constructor() {
         super(OrganelleName);
         this.viewModule = null;
+        this.viewService = null;
+        this_ = this;
+    }
+    bindActions(addAction) {
         this.viewService = {
             saveParticle: (particle) => {
                 this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);
@@ -24,9 +28,6 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
                 this_.send(new Particle({ name: constants.impacts.RemoveParticle }, particle), this_.name);
             }
         };
-        this_ = this;
-    }
-    bindActions(addAction) {
         this.viewModule = require('component/root.js');
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;

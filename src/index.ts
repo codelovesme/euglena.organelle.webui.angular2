@@ -18,23 +18,24 @@ let this_: Organelle = null;
 export class Organelle extends euglena_template.being.alive.organelle.WebUIOrganelle {
     private sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
     private viewModule: any = null;
-    private viewService: any = {
-        saveParticle: (particle: Particle) => {
-            this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);
-        },
-        readParticle: (particle: Particle) => {
-            this_.send(new Particle({ name: constants.impacts.ReadParticle }, particle), this_.name);
-        },
-        removeParticle: (particle: Particle) => {
-            this_.send(new Particle({ name: constants.impacts.RemoveParticle }, particle), this_.name);
-        }
-    };
+    private viewService: any = null;
+
     constructor() {
         super(OrganelleName);
         this_ = this;
-        
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
+        this.viewService = {
+            saveParticle: (particle: Particle) => {
+                this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);
+            },
+            readParticle: (particle: Particle) => {
+                this_.send(new Particle({ name: constants.impacts.ReadParticle }, particle), this_.name);
+            },
+            removeParticle: (particle: Particle) => {
+                this_.send(new Particle({ name: constants.impacts.RemoveParticle }, particle), this_.name);
+            }
+        };
         this.viewModule = require('component/root.js');
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
