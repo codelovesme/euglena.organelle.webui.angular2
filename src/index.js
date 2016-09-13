@@ -8,15 +8,14 @@ const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 var constants = euglena_template_1.euglena_template.being.alive.constants;
 const OrganelleName = euglena_template_1.euglena_template.being.alive.constants.organelles.WebUIOrganelle;
-let this_ = null;
 class Organelle extends euglena_template_1.euglena_template.being.alive.organelle.WebUIOrganelle {
     constructor() {
         super(OrganelleName);
         this.viewModule = null;
         this.viewService = null;
-        this_ = this;
     }
     bindActions(addAction) {
+        let this_ = this;
         this.viewService = {
             saveParticle: (particle) => {
                 this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);

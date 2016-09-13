@@ -14,7 +14,6 @@ import constants = euglena_template.being.alive.constants;
 
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 
-let this_: Organelle = null;
 export class Organelle extends euglena_template.being.alive.organelle.WebUIOrganelle {
     private sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
     private viewModule: any = null;
@@ -22,9 +21,10 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
 
     constructor() {
         super(OrganelleName);
-        this_ = this;
+
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
+        let this_ = this;
         this.viewService = {
             saveParticle: (particle: Particle) => {
                 this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);
