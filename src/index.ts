@@ -21,11 +21,10 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
 
     constructor() {
         super(OrganelleName);
-
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
         let this_ = this;
-        this.viewService = {
+        this_.viewService = {
             saveParticle: (particle: Particle) => {
                 this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);
             },
@@ -36,22 +35,22 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
                 this_.send(new Particle({ name: constants.impacts.RemoveParticle }, particle), this_.name);
             }
         };
-        this.viewModule = require('component/root.js');
+        this_.viewModule = require('component/root.js');
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
             this_.getAlive();
         });
         addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
-            this.viewModule.$scope.cytoplasm.saveParticle(particle.data);
+            this_.viewModule.$scope.cytoplasm.saveParticle(particle.data);
         });
         addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
-            let data = this.viewModule.$scope.cytoplasm.readParticle(particle.data);
+            let data = this_.viewModule.$scope.cytoplasm.readParticle(particle.data);
             this_.send(data, this_.name);
         });
         addAction(euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
-            this.viewModule.$scope.cytoplasm.removeParticle(particle.data);
+            this_.viewModule.$scope.cytoplasm.removeParticle(particle.data);
         });
-        this.viewModule.$scope.cytoplasm.setService(this_.viewService);
+        this_.viewModule.$scope.cytoplasm.setService(this_.viewService);
     }
     private getAlive(): void {
         enableProdMode();
