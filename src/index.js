@@ -16,13 +16,13 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         let this_ = this;
         this_.viewService = {
             saveParticle: (particle) => {
-                this_.send(new Particle({ name: constants.impacts.SaveParticle }, particle), this_.name);
+                this_.send(new Particle({ name: constants.impacts.SaveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             },
             readParticle: (particle) => {
-                this_.send(new Particle({ name: constants.impacts.ReadParticle }, particle), this_.name);
+                this_.send(new Particle({ name: constants.impacts.ReadParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             },
             removeParticle: (particle) => {
-                this_.send(new Particle({ name: constants.impacts.RemoveParticle }, particle), this_.name);
+                this_.send(new Particle({ name: constants.impacts.RemoveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             }
         };
         this_.viewModule = require('component/root.js');
