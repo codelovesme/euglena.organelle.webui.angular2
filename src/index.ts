@@ -35,7 +35,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
                 this_.send(new Particle({ name: constants.impacts.RemoveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             }
         };
-        this_.viewModule = require('component/root.js');
+        this_.viewModule = require(this_.sapContent.rootComponentUrl);
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
             this_.getAlive();
