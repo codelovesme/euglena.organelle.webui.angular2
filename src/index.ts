@@ -24,7 +24,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
         let this_ = this;
-        this_.viewService = {
+        this.viewService = {
             saveParticle: (particle: Particle) => {
                 this_.send(new Particle({ name: constants.impacts.SaveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             },
@@ -35,10 +35,11 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
                 this_.send(new Particle({ name: constants.impacts.RemoveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             }
         };
-        this_.viewModule = require(this_.sapContent.rootComponentUrl);
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
             this_.getAlive();
+            this_.viewModule = require(this_.sapContent.rootComponentUrl);
+            this_.viewModule.$scope.cytoplasm.setService(this_.viewService);
         });
         addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.saveParticle(particle.data);
@@ -50,7 +51,6 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
         addAction(euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.removeParticle(particle.data);
         });
-        this_.viewModule.$scope.cytoplasm.setService(this_.viewService);
     }
     private getAlive(): void {
         enableProdMode();
