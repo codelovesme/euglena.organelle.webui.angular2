@@ -37,9 +37,9 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
         };
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
-            this_.getAlive();
             this_.viewModule = require(this_.sapContent.rootComponentUrl);
             this_.viewModule.$scope.cytoplasm.setService(this_.viewService);
+            this_.getAlive();
         });
         addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.saveParticle(particle.data);
