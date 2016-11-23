@@ -41,7 +41,6 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
                 this_.viewModule = foo;
                 this_.viewModule.$scope.cytoplasm.setService(this_.viewService);
                 this_.getAlive();
-                this_.send(new euglena_template.being.alive.particle.OrganelleHasComeToLife(this_.name, this_.sapContent.euglenaName), this_.name);
             });
         });
         addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
@@ -58,5 +57,6 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     private getAlive(): void {
         enableProdMode();
         bootstrap(this.viewModule.RootComponent, [provideRouter(this.viewModule.ROUTES), this.viewModule.$scope]);
+        this.send(new euglena_template.being.alive.particle.OrganelleHasComeToLife(this_.name, this_.sapContent.euglenaName), this_.name);
     }
 }
