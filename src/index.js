@@ -36,9 +36,14 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.saveParticle(particle.data);
         });
-        addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
+        addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle, callback) => {
             let data = this_.viewModule.$scope.cytoplasm.readParticle(particle.data);
-            this_.send(data, this_.name);
+            if (callback) {
+                callback(data);
+            }
+            else {
+                this_.send(data, this_.name);
+            }
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.removeParticle(particle.data);

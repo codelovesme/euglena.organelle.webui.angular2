@@ -27,7 +27,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     constructor() {
         super(OrganelleName);
     }
-    protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
+    protected bindActions(addAction: (particleName: string, action: (particle: Particle, callback: (particle: Particle) => void) => void) => void): void {
         let this_ = this;
         this.viewService = {
             saveParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
@@ -51,9 +51,13 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
         addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.saveParticle(particle.data);
         });
-        addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle) => {
-            let data = this_.viewModule.$scope.cytoplasm.readParticle(particle.data);
-            this_.send(data, this_.name);
+        addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle, callback) => {
+            let data = this_.viewModule.$scope.cytoplasm.readParticle(particle.data); 
+            if(callback){
+                callback(data);
+            }else{
+                this_.send(data, this_.name);
+            }
         });
         addAction(euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
             this_.viewModule.$scope.cytoplasm.removeParticle(particle.data);

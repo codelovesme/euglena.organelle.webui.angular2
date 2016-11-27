@@ -7,6 +7,6 @@ export declare class Organelle extends euglena_template.being.alive.organelle.We
     private viewModule;
     private viewService;
     constructor();
-    protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void;
+    protected bindActions(addAction: (particleName: string, action: (particle: Particle, callback: (particle: Particle) => void) => void) => void): void;
     private getAlive();
 }
