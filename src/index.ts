@@ -2,6 +2,9 @@
 
 
 "use strict";
+
+declare var System: any;
+
 import { euglena_template } from "euglena.template";
 import { euglena } from "euglena";
 import Particle = euglena.being.Particle;
@@ -11,6 +14,8 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { provideRouter, RouterConfig } from '@angular/router';
 import constants = euglena_template.being.alive.constants;
+
+
 
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 
@@ -25,13 +30,13 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     protected bindActions(addAction: (particleName: string, action: (particle: Particle) => void) => void): void {
         let this_ = this;
         this.viewService = {
-            saveParticle: (particle: Particle) => {
+            saveParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
                 this_.send(new Particle({ name: constants.impacts.SaveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             },
-            readParticle: (particle: Particle) => {
+            readParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
                 this_.send(new Particle({ name: constants.impacts.ReadParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             },
-            removeParticle: (particle: Particle) => {
+            removeParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
                 this_.send(new Particle({ name: constants.impacts.RemoveParticle, of: this_.sapContent.euglenaName }, particle), this_.name);
             }
         };
