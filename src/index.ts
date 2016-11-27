@@ -57,6 +57,6 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     private getAlive(): void {
         enableProdMode();
         bootstrap(this.viewModule.RootComponent, [provideRouter(this.viewModule.ROUTES), this.viewModule.$scope]);
-        this.send(new euglena_template.being.alive.particle.OrganelleHasComeToLife(this_.name, this_.sapContent.euglenaName), this_.name);
+        this.send(new euglena_template.being.alive.particle.OrganelleHasComeToLife(this.name, this.sapContent.euglenaName), this.name);
     }
 }
