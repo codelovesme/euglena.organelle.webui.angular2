@@ -14,7 +14,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { provideRouter, RouterConfig } from '@angular/router';
 import constants = euglena_template.being.alive.constants;
-let rootComponent = require("component/root.bundle");
+let rootComponent = require("rootComponent");
 
 
 
