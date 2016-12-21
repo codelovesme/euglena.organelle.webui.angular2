@@ -7,7 +7,7 @@ const platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 var constants = euglena_template_1.euglena_template.being.alive.constants;
-let rootComponent = require("root");
+let rootComponent = require("rootComponent");
 const OrganelleName = euglena_template_1.euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 class Organelle extends euglena_template_1.euglena_template.being.alive.organelle.WebUIOrganelle {
     constructor() {
@@ -23,13 +23,13 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
                 this.send(new Particle({ name: constants.impacts.RemoveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
             }
         };
-        rootComponent.$scope.cytoplasm.setService(this.viewService);
-        this.getAlive();
     }
     bindActions(addAction) {
         let this_ = this;
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
+            rootComponent.$scope.cytoplasm.setService(this.viewService);
+            this.getAlive();
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
             rootComponent.$scope.cytoplasm.saveParticle(particle.data);

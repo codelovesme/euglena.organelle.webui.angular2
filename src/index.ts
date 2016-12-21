@@ -23,27 +23,27 @@ const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrg
 export class Organelle extends euglena_template.being.alive.organelle.WebUIOrganelle {
     private sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
     private viewService = {
-            saveParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
-                this.send(new Particle({ name: constants.impacts.SaveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
-            },
-            readParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
-                this.send(new Particle({ name: constants.impacts.ReadParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
-            },
-            removeParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
-                this.send(new Particle({ name: constants.impacts.RemoveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
-            }
-        };
+        saveParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
+            this.send(new Particle({ name: constants.impacts.SaveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
+        },
+        readParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
+            this.send(new Particle({ name: constants.impacts.ReadParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
+        },
+        removeParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
+            this.send(new Particle({ name: constants.impacts.RemoveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
+        }
+    };
 
     constructor() {
         super(OrganelleName);
-        rootComponent.$scope.cytoplasm.setService(this.viewService);
-        this.getAlive();
     }
     protected bindActions(addAction: (particleName: string, action: (particle: Particle, callback: (particle: Particle) => void) => void) => void): void {
         let this_ = this;
-        
+
         addAction(euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
+            rootComponent.$scope.cytoplasm.setService(this.viewService);
+            this.getAlive();
         });
         addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
             rootComponent.$scope.cytoplasm.saveParticle(particle.data);
