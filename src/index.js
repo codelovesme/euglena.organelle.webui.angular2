@@ -1,4 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
 "use strict";
 const euglena_template_1 = require("euglena.template");
 const euglena_1 = require("euglena");
