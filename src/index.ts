@@ -4,6 +4,7 @@
 "use strict";
 
 declare var System: any;
+declare var require: any;
 
 import { euglena_template } from "euglena.template";
 import { euglena } from "euglena";
@@ -13,8 +14,9 @@ import Exception = euglena.sys.type.Exception;
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import constants = euglena_template.being.alive.constants;
-import { AppModule, $scope } from "app.module";
-
+let lib = require("app.module");
+let AppModule = lib.AppModuledule;
+let $scope = lib.$scope;
 
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 
