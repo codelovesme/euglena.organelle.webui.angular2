@@ -6,7 +6,7 @@ const platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 const core_1 = require('@angular/core');
 var constants = euglena_template_1.euglena_template.being.alive.constants;
 let lib = require("app.module");
-let AppModule = lib.AppModuledule;
+let AppModule = lib.AppModule;
 let $scope = lib.$scope;
 const OrganelleName = euglena_template_1.euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 class Organelle extends euglena_template_1.euglena_template.being.alive.organelle.WebUIOrganelle {

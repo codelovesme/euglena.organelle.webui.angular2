@@ -15,7 +15,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import constants = euglena_template.being.alive.constants;
 let lib = require("app.module");
-let AppModule = lib.AppModuledule;
+let AppModule = lib.AppModule;
 let $scope = lib.$scope;
 
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
