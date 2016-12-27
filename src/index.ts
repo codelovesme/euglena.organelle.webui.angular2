@@ -5,6 +5,7 @@
 
 declare var System: any;
 declare var require: any;
+declare var $scope: any;
 
 import { euglena_template } from "euglena.template";
 import { euglena } from "euglena";
@@ -16,7 +17,6 @@ import { enableProdMode } from '@angular/core';
 import constants = euglena_template.being.alive.constants;
 let lib = require("app.module");
 let AppModule = lib.AppModule;
-let $scope = lib.$scope;
 
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 
