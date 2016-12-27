@@ -4,9 +4,8 @@ const euglena_1 = require("euglena");
 var Particle = euglena_1.euglena.being.Particle;
 const platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
 const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
 var constants = euglena_template_1.euglena_template.being.alive.constants;
-let rootComponent = require("rootComponent");
+const app_module_1 = require("app.module");
 const OrganelleName = euglena_template_1.euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 class Organelle extends euglena_template_1.euglena_template.being.alive.organelle.WebUIOrganelle {
     constructor() {
@@ -27,14 +26,14 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
         let this_ = this;
         addAction(euglena_template_1.euglena_template.being.alive.constants.particles.WebUIOrganelleSap, (particle) => {
             this_.sapContent = particle.data;
-            rootComponent.$scope.cytoplasm.setService(this.viewService);
+            app_module_1.$scope.cytoplasm.setService(this.viewService);
             this.getAlive();
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
-            rootComponent.$scope.cytoplasm.saveParticle(particle.data);
+            app_module_1.$scope.cytoplasm.saveParticle(particle.data);
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.ReadParticle, (particle, callback) => {
-            let data = rootComponent.$scope.cytoplasm.readParticle(particle.data);
+            let data = app_module_1.$scope.cytoplasm.readParticle(particle.data);
             if (callback) {
                 callback(data);
             }
@@ -43,12 +42,13 @@ class Organelle extends euglena_template_1.euglena_template.being.alive.organell
             }
         });
         addAction(euglena_template_1.euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
-            rootComponent.$scope.cytoplasm.removeParticle(particle.data);
+            app_module_1.$scope.cytoplasm.removeParticle(particle.data);
         });
     }
     getAlive() {
         core_1.enableProdMode();
-        platform_browser_dynamic_1.bootstrap(rootComponent.RootComponent, [router_1.provideRouter(rootComponent.ROUTES), rootComponent.$scope]);
+        platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
+        //bootstrap(rootComponent.RootComponent, [provideRouter(rootComponent.ROUTES), rootComponent.$scope]);
         this.send(new euglena_template_1.euglena_template.being.alive.particle.OrganelleHasComeToLife(this.name, this.sapContent.euglenaName), this.name);
     }
 }
