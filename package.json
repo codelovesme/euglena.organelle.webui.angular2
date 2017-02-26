@@ -24,6 +24,7 @@
     "zone.js": "^0.6.23",
     "euglena": "https://github.com/codelovesme/euglena.git#develop",
     "euglena.template": "https://github.com/codelovesme/euglena.template.git",
-    "socket.io-client": "^1.4.8"
+    "socket.io-client": "^1.4.8",
+    "node-uuid": "^1.4.7"
   }
 }

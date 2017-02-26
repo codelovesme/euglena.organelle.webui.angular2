@@ -21,7 +21,7 @@ let AppModule = lib.AppModule;
 const OrganelleName = euglena_template.being.alive.constants.organelles.WebUIOrganelle;
 
 export class Organelle extends euglena_template.being.alive.organelle.WebUIOrganelle {
-    private sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
+    public sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
     private viewService = {
         saveParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
             this.send(new Particle({ name: constants.impacts.SaveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);

@@ -7,8 +7,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var euglena_template_1 = require("euglena.template");
 var euglena_1 = require("euglena");
 var Particle = euglena_1.euglena.being.Particle;
-var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
-var core_1 = require('@angular/core');
+var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
+var core_1 = require("@angular/core");
 var constants = euglena_template_1.euglena_template.being.alive.constants;
 var lib = require("app.module");
 var AppModule = lib.AppModule;
@@ -16,9 +16,8 @@ var OrganelleName = euglena_template_1.euglena_template.being.alive.constants.or
 var Organelle = (function (_super) {
     __extends(Organelle, _super);
     function Organelle() {
-        var _this = this;
-        _super.call(this, OrganelleName);
-        this.viewService = {
+        var _this = _super.call(this, OrganelleName) || this;
+        _this.viewService = {
             saveParticle: function (particle, callback) {
                 _this.send(new Particle({ name: constants.impacts.SaveParticle, of: _this.sapContent.euglenaName }, particle), _this.name, callback);
             },
@@ -29,6 +28,7 @@ var Organelle = (function (_super) {
                 _this.send(new Particle({ name: constants.impacts.RemoveParticle, of: _this.sapContent.euglenaName }, particle), _this.name, callback);
             }
         };
+        return _this;
     }
     Organelle.prototype.bindActions = function (addAction) {
         var _this = this;
