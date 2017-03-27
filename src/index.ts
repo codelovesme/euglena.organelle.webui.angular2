@@ -10,6 +10,8 @@ declare var $scope: any;
 import { euglena_template } from "euglena.template";
 import { euglena } from "euglena";
 import Particle = euglena.being.Particle;
+import ParticleV2 = euglena.being.ParticleV2;
+import MetaV2 = euglena.being.MetaV2;
 import Exception = euglena.sys.type.Exception;
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -24,13 +26,13 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
     private sapContent: euglena_template.being.alive.particle.WebUIOrganelleSapContent;
     private viewService = {
         saveParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
-            this.send(new Particle({ name: constants.impacts.SaveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
+            this.send(new ParticleV2<Particle>(new MetaV2(constants.particles.SaveParticle, this.sapContent.euglenaName), particle), this.name, callback);
         },
         readParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
-            this.send(new Particle({ name: constants.impacts.ReadParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
+            this.send(new ParticleV2<Particle>(new MetaV2(constants.particles.ReadParticle, this.sapContent.euglenaName), particle), this.name, callback);
         },
         removeParticle: (particle: Particle, callback?: (particle: Particle) => void) => {
-            this.send(new Particle({ name: constants.impacts.RemoveParticle, of: this.sapContent.euglenaName }, particle), this.name, callback);
+            this.send(new ParticleV2<Particle>(new MetaV2(constants.particles.RemoveParticle, this.sapContent.euglenaName), particle), this.name, callback);
         }
     };
 
@@ -45,10 +47,10 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
             $scope.cytoplasm.setService(this.viewService);
             this.getAlive();
         });
-        addAction(euglena_template.being.alive.constants.impacts.SaveParticle, (particle) => {
+        addAction(euglena_template.being.alive.constants.particles.SaveParticle, (particle) => {
             $scope.cytoplasm.saveParticle(particle.data);
         });
-        addAction(euglena_template.being.alive.constants.impacts.ReadParticle, (particle, callback) => {
+        addAction(euglena_template.being.alive.constants.particles.ReadParticle, (particle, callback) => {
             let data = $scope.cytoplasm.readParticle(particle.data);
             if (callback) {
                 callback(data);
@@ -56,7 +58,7 @@ export class Organelle extends euglena_template.being.alive.organelle.WebUIOrgan
                 this_.send(data, this_.name);
             }
         });
-        addAction(euglena_template.being.alive.constants.impacts.RemoveParticle, (particle) => {
+        addAction(euglena_template.being.alive.constants.particles.RemoveParticle, (particle) => {
             $scope.cytoplasm.removeParticle(particle.data);
         });
     }
